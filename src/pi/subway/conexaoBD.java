@@ -18,7 +18,7 @@ public class conexaoBD {
 
     public static Connection conectar() throws Exception {
 
-        String url = "jdbc:postgresql://localhost:5432/Subway";
+        String url = "jdbc:postgresql://localhost:5432/Banco_Subway";
         String usuario = "postgres";
         String senha = "admin";
 
