@@ -37,11 +37,11 @@ public class Login extends javax.swing.JFrame {
 
         jLabelSenha = new javax.swing.JLabel();
         jLabelUsuario = new javax.swing.JLabel();
-        jTextFieldSenha = new javax.swing.JTextField();
         jTextFieldUsuario = new javax.swing.JTextField();
         jButtonEntrar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(259, 245));
@@ -57,13 +57,6 @@ public class Login extends javax.swing.JFrame {
         jLabelUsuario.setBounds(50, 70, 50, 20);
         jLabelUsuario.getAccessibleContext().setAccessibleName("jLabelUsuario");
 
-        jTextFieldSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldSenhaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldSenha);
-        jTextFieldSenha.setBounds(110, 100, 100, 22);
         getContentPane().add(jTextFieldUsuario);
         jTextFieldUsuario.setBounds(110, 70, 100, 22);
 
@@ -84,12 +77,16 @@ public class Login extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(90, 20, 90, 16);
 
+        jPasswordFieldSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordFieldSenhaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jPasswordFieldSenha);
+        jPasswordFieldSenha.setBounds(100, 100, 126, 22);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldSenhaActionPerformed
 
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         String nome = logar();
@@ -104,10 +101,16 @@ public class Login extends javax.swing.JFrame {
         
        
     }//GEN-LAST:event_jButtonEntrarActionPerformed
- private String logar() {
+
+    private void jPasswordFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
+ //Verifica se o usuario e a senha se encontram no banco de dados e batem e retorna o nome do usuario
+    
+    private String logar() {
         try (Connection con = conexaoBD.conectar()) {
             int usuario = Integer.parseInt(jTextFieldUsuario.getText());
-            int senha = Integer.parseInt(jTextFieldUsuario.getText());
+            int senha = Integer.parseInt(jPasswordFieldSenha.getText());
             
             String sql = "select * from login where id_login = ? and senha = ?";
             
@@ -118,6 +121,7 @@ public class Login extends javax.swing.JFrame {
             
             if (rs.next()) {
                 return rs.getString("id_login");
+                
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -173,7 +177,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
-    private javax.swing.JTextField jTextFieldSenha;
+    private javax.swing.JPasswordField jPasswordFieldSenha;
     private javax.swing.JTextField jTextFieldUsuario;
     // End of variables declaration//GEN-END:variables
 }
