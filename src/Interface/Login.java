@@ -89,7 +89,7 @@ public class Login extends javax.swing.JFrame {
             if (nome != null) {
             Menu menu = new Menu(nome);
             menu.setVisible(true);
-            dispose();
+            dispose();bdfbf
         } else {
             JOptionPane.showMessageDialog(rootPane, "Usuário ou senha inválidos!");
         }
