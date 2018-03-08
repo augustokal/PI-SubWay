@@ -49,7 +49,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabelSenha.setText("Senha:");
         getContentPane().add(jLabelSenha);
-        jLabelSenha.setBounds(50, 100, 50, 16);
+        jLabelSenha.setBounds(50, 100, 50, 14);
 
         jLabelUsuario.setText("Usuário:");
         jLabelUsuario.setToolTipText("");
@@ -63,9 +63,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldSenha);
-        jTextFieldSenha.setBounds(110, 100, 100, 22);
+        jTextFieldSenha.setBounds(110, 100, 100, 20);
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(110, 70, 100, 22);
+        jTextFieldUsuario.setBounds(110, 70, 100, 20);
 
         jButtonEntrar.setText("Entrar");
         jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,15 +74,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonEntrar);
-        jButtonEntrar.setBounds(50, 140, 67, 25);
+        jButtonEntrar.setBounds(50, 140, 63, 23);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
-        jButtonSair.setBounds(140, 140, 79, 25);
+        jButtonSair.setBounds(140, 140, 79, 23);
 
         jLabel1.setText("Tela de login");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(90, 20, 90, 16);
+        jLabel1.setBounds(90, 20, 90, 14);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
