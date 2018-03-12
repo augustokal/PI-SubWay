@@ -42,9 +42,12 @@ public class Login extends javax.swing.JFrame {
         jButtonSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(259, 245));
+        setPreferredSize(new java.awt.Dimension(300, 300));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabelSenha.setText("Senha:");
@@ -67,7 +70,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButtonEntrar);
-        jButtonEntrar.setBounds(50, 140, 67, 25);
+        jButtonEntrar.setBounds(50, 140, 80, 25);
 
         jButtonSair.setText("Sair");
         getContentPane().add(jButtonSair);
@@ -84,6 +87,19 @@ public class Login extends javax.swing.JFrame {
         });
         getContentPane().add(jPasswordFieldSenha);
         jPasswordFieldSenha.setBounds(100, 100, 126, 22);
+
+        jButton1.setText("Clique AQUI !");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(50, 190, 170, 25);
+
+        jLabel2.setText("Não tem cadastro?");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(80, 170, 110, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -105,6 +121,11 @@ public class Login extends javax.swing.JFrame {
     private void jPasswordFieldSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordFieldSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordFieldSenhaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        CadastroCliente cadastroMenu= new CadastroCliente();
+        cadastroMenu.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
  //Verifica se o usuario e a senha se encontram no banco de dados e batem e retorna o nome do usuario
     
     private String logar() {
@@ -172,9 +193,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPasswordField jPasswordFieldSenha;
