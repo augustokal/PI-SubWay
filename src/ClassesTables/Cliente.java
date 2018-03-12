@@ -31,6 +31,7 @@ public class Cliente extends Pedido implements InterfaceClasses {
         this.id_cliente = id_cliente;
     }
 
+    @Override
     public String getNome() {
         return nome;
     }
@@ -39,6 +40,7 @@ public class Cliente extends Pedido implements InterfaceClasses {
         this.nome = nome;
     }
 
+    @Override
     public Date getDataNascimento() {
         return DataNascimento;
     }
