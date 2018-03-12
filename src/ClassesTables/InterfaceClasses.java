@@ -21,6 +21,4 @@ public interface InterfaceClasses {
     public String getCidade();
     public String getTelefone();
     public String getEmail();
-
-
 }
