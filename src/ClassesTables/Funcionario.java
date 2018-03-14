@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Andressa
  */
 public class Funcionario extends Produto implements InterfaceClasses {
+
     private int id_funcionario;
     private String nome;
     private Date DataNascimento;
@@ -25,6 +26,8 @@ public class Funcionario extends Produto implements InterfaceClasses {
     private String Telefone;
     private String email;
     private String Estado;
+    private String Usuario;
+    private String Senha;
 
     
     public int getId_funcionario() {
@@ -124,5 +127,24 @@ public class Funcionario extends Produto implements InterfaceClasses {
     public void setEstado(String Estado) {
         this.Estado = Estado;
     }
-   
+       
+    
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    
+    public String getSenha() {
+        return Senha;
+    }
+
+    
+    public void setSenha(String senha) {
+        this.Senha = senha;
+    }
 }
