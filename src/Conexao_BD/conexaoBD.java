@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pi.subway;
+package Conexao_BD;
 
 import com.sun.corba.se.spi.orbutil.fsm.State;
 import java.sql.Connection;

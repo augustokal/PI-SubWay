@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
-import pi.subway.conexaoBD;
+import Conexao_BD.conexaoBD;
 
 /**
  *

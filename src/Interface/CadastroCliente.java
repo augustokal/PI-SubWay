@@ -63,47 +63,47 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 10, 38, 16);
+        jLabel1.setBounds(20, 10, 31, 14);
 
         jLabel2.setText("CPF:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 40, 27, 16);
+        jLabel2.setBounds(20, 40, 23, 14);
 
         jLabel3.setText("Rua:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 340, 27, 20);
+        jLabel3.setBounds(30, 340, 23, 20);
 
         jLabel4.setText("Bairro:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 370, 40, 16);
+        jLabel4.setBounds(30, 370, 40, 14);
 
         jLabel5.setText("Cidade:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 400, 44, 16);
+        jLabel5.setBounds(30, 400, 37, 14);
 
         jLabel6.setText("Telefone:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 70, 55, 20);
+        jLabel6.setBounds(20, 70, 46, 20);
 
         jLabel7.setText("E-mail:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 110, 41, 16);
+        jLabel7.setBounds(20, 110, 32, 14);
 
         jLabel8.setText("data de nascimento:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 150, 117, 16);
+        jLabel8.setBounds(10, 150, 98, 14);
 
         jLabel9.setText("NUmero:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(210, 340, 51, 20);
+        jLabel9.setBounds(210, 340, 42, 20);
 
         jTextFieldCidade.setText("cidade");
         getContentPane().add(jTextFieldCidade);
-        jTextFieldCidade.setBounds(70, 400, 100, 22);
+        jTextFieldCidade.setBounds(70, 400, 100, 20);
 
         jTextFieldNome.setText("nome");
         getContentPane().add(jTextFieldNome);
-        jTextFieldNome.setBounds(60, 10, 70, 22);
+        jTextFieldNome.setBounds(60, 10, 70, 20);
 
         jTextFieldCPF.setText("cpf");
         jTextFieldCPF.addActionListener(new java.awt.event.ActionListener() {
@@ -112,11 +112,11 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextFieldCPF);
-        jTextFieldCPF.setBounds(50, 40, 120, 22);
+        jTextFieldCPF.setBounds(50, 40, 120, 20);
 
         jTextFieldBairro.setText("bairro");
         getContentPane().add(jTextFieldBairro);
-        jTextFieldBairro.setBounds(70, 370, 120, 22);
+        jTextFieldBairro.setBounds(70, 370, 120, 20);
 
         jTextFieldRua.setText("rua");
         jTextFieldRua.addActionListener(new java.awt.event.ActionListener() {
@@ -138,11 +138,11 @@ public class CadastroCliente extends javax.swing.JFrame {
 
         jTextFieldEmail.setText("email");
         getContentPane().add(jTextFieldEmail);
-        jTextFieldEmail.setBounds(70, 110, 130, 22);
+        jTextFieldEmail.setBounds(70, 110, 130, 20);
 
         jTextFieldNascimento.setText("dataNasc");
         getContentPane().add(jTextFieldNascimento);
-        jTextFieldNascimento.setBounds(130, 150, 70, 22);
+        jTextFieldNascimento.setBounds(130, 150, 70, 20);
 
         jTextFieldNumero.setText("numero");
         getContentPane().add(jTextFieldNumero);
@@ -155,27 +155,27 @@ public class CadastroCliente extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jToggleButtonCadastrar);
-        jToggleButtonCadastrar.setBounds(80, 450, 89, 25);
+        jToggleButtonCadastrar.setBounds(80, 450, 81, 23);
 
         jToggleButtonCancelar.setText("Cancelar");
         getContentPane().add(jToggleButtonCancelar);
-        jToggleButtonCancelar.setBounds(190, 450, 83, 25);
+        jToggleButtonCancelar.setBounds(190, 450, 75, 23);
 
         jLabel10.setText("Usuario:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 200, 48, 16);
+        jLabel10.setBounds(20, 200, 40, 14);
 
         jLabel11.setText("Senha:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 230, 48, 16);
+        jLabel11.setBounds(20, 230, 48, 14);
 
         jTextFieldUsuario.setText("usuario");
         getContentPane().add(jTextFieldUsuario);
-        jTextFieldUsuario.setBounds(80, 200, 48, 22);
+        jTextFieldUsuario.setBounds(80, 200, 41, 20);
 
         jPasswordFieldPass.setText("jPasswordField1");
         getContentPane().add(jPasswordFieldPass);
-        jPasswordFieldPass.setBounds(80, 230, 126, 22);
+        jPasswordFieldPass.setBounds(80, 230, 111, 20);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
