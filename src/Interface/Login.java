@@ -127,18 +127,18 @@ public class Login extends javax.swing.JFrame {
     
     private String logar() {
         try (Connection con = conexaoBD.conectar()) {
-            int usuario = Integer.parseInt(jTextFieldUsuario.getText());
-            int senha = Integer.parseInt(jPasswordFieldSenha.getText());
+            String usuario = jTextFieldUsuario.getText();
+            String senha = jPasswordFieldSenha.getText();
             
-            String sql = "select * from login where id_login = ? and senha = ?";
+            String sql = "select * from login where nome_usuario = ? and senha = ?";
             
             PreparedStatement stmt = con.prepareStatement(sql);
-            stmt.setInt(1, usuario);
-            stmt.setInt(2, senha);
+            stmt.setString(1, usuario);
+            stmt.setString(2, senha);
             ResultSet rs = stmt.executeQuery();
             
             if (rs.next()) {
-                return rs.getString("id_login");
+                return rs.getString("nome_usuario");
                 
             }
         } catch (Exception e) {

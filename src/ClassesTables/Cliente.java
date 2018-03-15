@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Andressa
  */
 public class Cliente extends Pedido implements InterfaceClasses {
+
     private int id_cliente;
     private String nome;
     private Date DataNascimento;
@@ -22,6 +23,8 @@ public class Cliente extends Pedido implements InterfaceClasses {
     private String Cidade;
     private String Telefone;
     private String email;
+    private String Usuario;
+    private String Senha;
 
     public int getId_cliente() {
         return id_cliente;
@@ -70,6 +73,7 @@ public class Cliente extends Pedido implements InterfaceClasses {
     public void setNumero(int Numero) {
         this.Numero = Numero;
     }
+
     public String getBairro() {
         return Bairro;
     }
@@ -85,16 +89,36 @@ public class Cliente extends Pedido implements InterfaceClasses {
     public void setCidade(String Cidade) {
         this.Cidade = Cidade;
     }
+
     public String getTelefone() {
         return Telefone;
     }
+
     public void setTelefone(String Telefone) {
         this.Telefone = Telefone;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUsuario() {
+        return Usuario;
+    }
+
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    public String getSenha() {
+        return Senha;
+    }
+
+    public void setSenha(String senha) {
+        this.Senha = senha;
     }
 }

@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Interface;
 
 import ClassesTables.Cliente;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import pi.subway.conexaoBD;
 
 /**
  *
@@ -49,6 +53,12 @@ public class CadastroCliente extends javax.swing.JFrame {
         jTextFieldTelefone = new javax.swing.JTextField();
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldNascimento = new javax.swing.JTextField();
+        try{
+            javax.swing.text.MaskFormatter data = 
+            new javax.swing.text.MaskFormatter("##/##/####");
+            jTextFieldNascimento = new javax.swing.JFormattedTextField(data);
+        }catch(Exception e){
+        }
         jTextFieldNumero = new javax.swing.JTextField();
         jToggleButtonCadastrar = new javax.swing.JToggleButton();
         jToggleButtonCancelar = new javax.swing.JToggleButton();
@@ -58,7 +68,7 @@ public class CadastroCliente extends javax.swing.JFrame {
         jPasswordFieldPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(380, 495));
+        setPreferredSize(new java.awt.Dimension(380, 600));
         getContentPane().setLayout(null);
 
         jLabel1.setText("Nome:");
@@ -140,7 +150,11 @@ public class CadastroCliente extends javax.swing.JFrame {
         getContentPane().add(jTextFieldEmail);
         jTextFieldEmail.setBounds(70, 110, 130, 20);
 
-        jTextFieldNascimento.setText("dataNasc");
+        jTextFieldNascimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNascimentoActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextFieldNascimento);
         jTextFieldNascimento.setBounds(130, 150, 70, 20);
 
@@ -181,25 +195,84 @@ public class CadastroCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jToggleButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButtonCadastrarActionPerformed
-        setCampos();
-        
+        if (cadastrar() == true) {
+            Login login = new Login();
+            login.setVisible(true);
+            JOptionPane.showMessageDialog(rootPane, "***Cadastro realizado, por favor faça login!***");
+            dispose();
+            
+        }else{
+           JOptionPane.showMessageDialog(rootPane, "***Problemas ao cadastrar dados, contate o administrador de sistemas"); 
+        }
+
+
     }//GEN-LAST:event_jToggleButtonCadastrarActionPerformed
-        public void setCampos(){
-           try{ Cliente cliente1 = new Cliente();
-            cliente1.setNome (jTextFieldNome.getText());
-            cliente1.setCPF (jTextFieldCPF.getText());
+    private boolean cadastrar() {
+        try (Connection con = conexaoBD.conectar()) {
+
+//Pegar os dados e encapsular.
+            Cliente cliente1 = new Cliente();
+            cliente1.setNome(jTextFieldNome.getText());
+            cliente1.setCPF(jTextFieldCPF.getText());
             cliente1.setEndereco(jTextFieldRua.getText());
             cliente1.setBairro(jTextFieldBairro.getText());
+            cliente1.setNumero(Integer.parseInt(jTextFieldNumero.getText()));
             cliente1.setCidade(jTextFieldCidade.getText());
             cliente1.setTelefone(jTextFieldTelefone.getText());
             cliente1.setEmail(jTextFieldEmail.getText());
-            //converter String em Date
-            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            cliente1.setUsuario(jTextFieldUsuario.getText());
+            cliente1.setSenha(jPasswordFieldPass.getText());
+
+//converter String em Date
+           // SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-dd-MM");
             cliente1.setDataNascimento(formatter.parse(jTextFieldNascimento.getText()));
-           }catch(Exception e){
-               JOptionPane.showMessageDialog(rootPane, "***Problemas ao cadastrar dados contate o administrador de sistemas" );
-           }
+            System.out.println(cliente1.getDataNascimento());
+
+//verificar se o campo usuario e senha possuem dados
+            if (cliente1.getUsuario() != null && !cliente1.getUsuario().equals("") && cliente1.getSenha() != null && !cliente1.getSenha().equals("")) {  /*Verifica se os campos usuário e senha estão preenchidos*/
+                String sql = "insert into login (nome_usuario, senha) values (?,?)";
+                PreparedStatement stmt = con.prepareStatement(sql);
+                stmt.setString(1, cliente1.getUsuario());
+                stmt.setString(2, cliente1.getSenha());
+                stmt.execute();
+
+//pegar o atual id_login na tabela login e armazenar na fk id_login na tabela cliente
+               
+                sql = "SELECT MAX(ID_login) FROM login";   /*Pega o maior numero na coluna id_login*/
+                stmt = con.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+                int id_login = 0;
+                if (rs.next()) {
+                 id_login = Integer.parseInt(rs.getString("max"));
+                 //
+
+                }
+//Cadastrar dados no banco de dados
+                sql = "insert into cliente (nome, cpf, endereco, numero_casa, bairro, cidade,telefone, email,id_login_fk,DATAdeNASCIMENTO) values (?,?,?,?,?,?,?,?,?,?)";
+                stmt = con.prepareStatement(sql);
+                stmt.setString(1, cliente1.getNome());
+                stmt.setString(2, cliente1.getCPF());
+                stmt.setString(3, cliente1.getEndereco());
+                stmt.setInt(4, cliente1.getNumero());
+                stmt.setDate(10, (Date) cliente1.getDataNascimento());
+                stmt.setString(5, cliente1.getBairro());
+                stmt.setString(6, cliente1.getCidade());
+                stmt.setString(7, cliente1.getTelefone());
+                stmt.setString(8, cliente1.getEmail());
+                stmt.setInt(9, id_login);
+                stmt.execute();
+                con.close();
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            
         }
+        return false;
+    }
+
+   
     private void jTextFieldCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCPFActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldCPFActionPerformed
@@ -211,6 +284,10 @@ public class CadastroCliente extends javax.swing.JFrame {
     private void jTextFieldRuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldRuaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldRuaActionPerformed
+
+    private void jTextFieldNascimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNascimentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNascimentoActionPerformed
 
     /**
      * @param args the command line arguments

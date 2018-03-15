@@ -13,8 +13,9 @@ public class Menu extends javax.swing.JFrame {
 
     /**
      * Creates new form Menu
+     * @param nome
      */
-    private String nome;
+    
     public Menu(String nome) {
         initComponents();
         this.jLabel1.setText(nome);
